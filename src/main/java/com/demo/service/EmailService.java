@@ -26,4 +26,5 @@ public class EmailService {
         order.setCustomerNotified(true);
         return true;
     }
+
 }
