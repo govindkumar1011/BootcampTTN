@@ -1,4 +1,5 @@
 package com.springbasics.springbasics.spring;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,49 +15,53 @@ import org.springframework.stereotype.Component;
 //
 //(6) Perform Constructor Injection in a Spring Bean
 interface Journey {
-	void startJourneyBy();
+    void startJourneyBy();
 }
+
 @Primary
 @Component
 class Car implements Journey {
 
 
-	public void startJourneyBy() {
-		System.out.println("Journey by car");
+    public void startJourneyBy() {
+        System.out.println("Journey by car");
 
-	}
+    }
 
 }
+
 @Component
-class Bike implements Journey{
+class Bike implements Journey {
 
 
-	public void startJourneyBy() {
-		System.out.println("Journey by bike");
+    public void startJourneyBy() {
+        System.out.println("Journey by bike");
 
-	}
+    }
 }
+
 @Component
 @SpringBootApplication
 public class SpringBasicsApplication {
-	@Autowired
-	Journey journey;
-	SpringBasicsApplication (Journey journey) //constructor injection
-	{
+    @Autowired
+    Journey journey;
 
-		this.journey=journey;
-	}
-	public void run()
-	{
-		journey.startJourneyBy();
-	}
+    SpringBasicsApplication(Journey journey) //constructor injection
+    {
 
-	public static void main(String[] args) {
-		//SpringBasicsApplication springBasicsApplication=new SpringBasicsApplication(new Bike());
+        this.journey = journey;
+    }
 
-	ApplicationContext applicationContext= SpringApplication.run(SpringBasicsApplication.class, args);
-		SpringBasicsApplication springBasicsApplication=applicationContext.getBean(SpringBasicsApplication.class);
-		springBasicsApplication.run();
-	}
+    public void run() {
+        journey.startJourneyBy();
+    }
+
+    public static void main(String[] args) {
+        //SpringBasicsApplication springBasicsApplication=new SpringBasicsApplication(new Bike());
+
+        ApplicationContext applicationContext = SpringApplication.run(SpringBasicsApplication.class, args);
+        SpringBasicsApplication springBasicsApplication = applicationContext.getBean(SpringBasicsApplication.class);
+        springBasicsApplication.run();
+    }
 
 }
